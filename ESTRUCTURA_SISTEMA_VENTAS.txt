@@ -1,0 +1,115 @@
+app/
+├── Core/
+│   ├── Database.php          // Conexión y operaciones básicas de base de datos
+│   ├── Router.php            // Manejo de rutas
+│   ├── Controller.php        // Clase base para controladores
+│   ├── Model.php             // Clase base para modelos
+│   ├── View.php              // Clase para renderizar vistas
+│   └── Auth.php              // Autenticación y manejo de sesión
+│
+├── Helpers/
+│   ├── functions.php         // Funciones de uso general (ej. redireccionar, sanitizar)
+│   ├── DateHelper.php        // Funciones para manejo de fechas
+│   ├── ValidationHelper.php  // Funciones para validación de datos
+│   ├── StringHelper.php      // Funciones para manipulación de cadenas
+│   ├── ImageHelper.php       // Funciones para subida/manejo de imágenes (productos)
+│   └── PdfGenerator.php      // Generador de PDFs (comprobantes, reportes)
+│
+├── Models/
+│   ├── Product.php           // Gestión de productos
+│   ├── Inventory.php         // Movimientos de inventario
+│   ├── Sale.php              // Ventas y detalles de venta
+│   ├── Client.php            // Clientes
+│   ├── Supplier.php          // Proveedores
+│   ├── Purchase.php          // Compras y órdenes de compra
+│   ├── Expense.php           // Gastos generales
+│   ├── Report.php            // Lógica para reportes
+│   ├── User.php              // Usuarios y roles
+│   ├── Role.php              // Roles y permisos
+│   └── Setting.php           // Configuración general del sistema
+│
+├── Views/
+│   ├── layouts/
+│   │   ├── header.php
+│   │   ├── footer.php
+│   │   └── sidebar.php
+│   │
+│   ├── product/              // Vistas para gestión de productos
+│   │   ├── index.php
+│   │   ├── create.php
+│   │   └── edit.php
+│   │
+│   ├── inventory/            // Vistas para movimientos de inventario
+│   │   ├── index.php
+│   │   └── movements.php
+│   │
+│   ├── pos/                  // Vistas para el punto de venta
+│   │   └── index.php
+│   │
+│   ├── client/               // Vistas para gestión de clientes
+│   │   ├── index.php
+│   │   ├── create.php
+│   │   └── edit.php
+│   │
+│   ├── supplier/             // Vistas para gestión de proveedores
+│   │   ├── index.php
+│   │   ├── create.php
+│   │   └── edit.php
+│   │
+│   ├── purchase/             // Vistas para gestión de compras
+│   │   ├── index.php
+│   │   └── create.php
+│   │
+│   ├── expense/              // Vistas para gastos generales
+│   │   ├── index.php
+│   │   └── create.php
+│   │
+│   ├── report/               // Vistas para reportes y análisis
+│   │   ├── dashboard.php
+│   │   └── sales_report.php
+│   │
+│   ├── user/                 // Vistas para usuarios y seguridad
+│   │   ├── index.php
+│   │   ├── create.php
+│   │   ├── edit.php
+│   │   └── roles.php
+│   │
+│   └── auth/                 // Vistas para autenticación
+│       └── login.php
+│
+└── Controllers/
+    ├── ProductController.php
+    ├── InventoryController.php
+    ├── PosController.php
+    ├── ClientController.php
+    ├── SupplierController.php
+    ├── PurchaseController.php
+    ├── ExpenseController.php
+    ├── ReportController.php
+    ├── UserController.php
+    └── AuthController.php
+
+├── public/                 // Archivos públicos accesibles directamente
+│   ├── css/
+│   │   └── style.css
+│   │
+│   ├── js/
+│   │   └── main.js
+│   │
+│   ├── img/
+│   │   └── logo.png
+│   │
+│   └── index.php           // Punto de entrada de la aplicación (front controller)
+│
+├── config/
+│   ├── app.php             // Configuración general de la aplicación
+│   ├── database.php        // Configuración de la base de datos
+│   └── routes.php          // Definición de rutas
+│
+├── storage/                // Almacenamiento de archivos generados/subidos
+│   ├── logs/
+│   ├── cache/
+│   └── uploads/            // Ej. imágenes de productos, comprobantes
+│
+├── .htaccess               // Reglas de reescritura de URL (para servidores Apache)
+└── README.md
