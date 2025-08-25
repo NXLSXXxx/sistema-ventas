@@ -1,5 +1,7 @@
 1️⃣ Gestión de Productos — Flujo
 
+De 42 balas 
+
 Nuevo/Editar producto → (Usuario) abre Productos > Nuevo o Editar.
 
 Completar datos → nombre, categoría/marca, variantes, precio costo/venta/mayorista, descripción.
