@@ -1,0 +1,202 @@
+1️⃣ Gestión de Productos — Flujo
+
+Nuevo/Editar producto → (Usuario) abre Productos > Nuevo o Editar.
+
+Completar datos → nombre, categoría/marca, variantes, precio costo/venta/mayorista, descripción.
+
+Código de barras/QR → (Opcional) escanear/generar; si no existe, el sistema lo genera.
+
+Validaciones → campos obligatorios, duplicado de nombre/código, precios coherentes.
+
+Guardar → (Sistema) crea/actualiza registro y versiones para auditoría.
+
+Disponibilidad → (Sistema) el producto queda visible en POS según permisos.
+
+Auditoría → (Sistema) registra quién creó/editó y cuándo.
+
+Salidas: producto listo para vender, con precios y código de barras listos.
+
+2️⃣ Inventario — Flujo (Movimientos)
+
+Abrir Inventario → Movimientos > Nuevo.
+
+Tipo de movimiento → Entrada (compra/ajuste), Salida (merma/devolución), Transferencia entre almacenes.
+
+Agregar ítems → escanear código o buscar producto, indicar cantidad/almacén.
+
+Referenciar documento → Compra #, Devolución #, Ajuste # (si aplica).
+
+Validaciones → stock suficiente en salidas, números positivos, permisos del usuario.
+
+Confirmar → (Sistema) aplica el movimiento y recalcula stock por almacén.
+
+Historial → (Sistema) registra línea a línea: fecha, tipo, ±cantidad, stock resultante, usuario, documento.
+
+Alertas → (Sistema) dispara alertas si se cruza umbral de bajo stock.
+
+Salidas: stock actualizado y trazabilidad completa.
+
+3️⃣ Ventas (POS Web) — Flujo
+
+Abrir POS → (Usuario) inicia venta.
+
+Cliente → buscar por DNI o Registrar rápido (DNI + Nombre) si es nuevo.
+
+Carrito → escanear códigos / buscar producto, ajustar cantidades; el sistema valida stock.
+
+Precios/Descuentos → aplicar promo automática o descuento manual (según permisos).
+
+Totales → impuestos, descuentos, total; ver cambio si pago en efectivo.
+
+Método(s) de pago → elegir entre los configurados (efectivo/tarjeta/Yape/Plin/etc.), permitir pago mixto.
+
+Confirmar venta → (Sistema) genera comprobante (boleta/factura si aplica).
+
+Inventario automático → (Sistema) crea salida por cada producto vendido.
+
+Entrega de ticket → imprimir o enviar por email/WhatsApp.
+
+Auditoría → (Sistema) guarda venta, cajero, cliente, método de pago, descuentos.
+
+Salidas: venta cerrada, comprobante emitido, stock descontado.
+
+4️⃣ Clientes — Flujo (Registro y Uso)
+
+Nuevo cliente → desde POS o Clientes > Nuevo.
+
+Datos → DNI (único) + Nombre (obligatorios) y opcionales (teléfono, correo, dirección).
+
+Validación → si el DNI existe, el sistema muestra “Cliente ya registrado”.
+
+Guardar → (Sistema) crea registro y lo asocia a la venta si venía desde POS.
+
+Consultas → buscar por DNI/nombre; ver historial de compras y beneficios.
+
+Actualizaciones → editar datos; auditoría de cambios.
+
+Salidas: base de clientes sin duplicados, historial listo para fidelización.
+
+5️⃣ Proveedores y Compras — Flujo
+
+Proveedor → seleccionar existente o registrar (RUC/DNI, razón social, contacto).
+
+Orden de compra (OC) → agregar productos (scan/búsqueda), cantidades, costos, impuestos; estado Pendiente.
+
+Recepción → al llegar mercadería, abrir OC y confirmar cantidades recibidas (parcial/total), lote/fecha (si aplica).
+
+Inventario automático → (Sistema) crea entrada por lo recibido y actualiza stock por almacén.
+
+Comprobante → registrar factura/boleta del proveedor.
+
+Cuentas por pagar → crear/actualizar saldo: Pagado/Parcial/Pendiente; vencimiento.
+
+Auditoría/Reportes → compras por proveedor, costos, diferencias OC vs recibido.
+
+Salidas: stock incrementado, obligación con proveedor registrada si corresponde.
+
+6️⃣ Gastos Generales — Flujo
+
+Nuevo gasto → Finanzas/Gastos > Nuevo.
+
+Categoría → fijo (renta/luz) u operativo (transporte, papelería, mantenimiento).
+
+Datos → monto, fecha, forma de pago, proveedor (opcional), adjuntar comprobante.
+
+Validación → campos mínimos, permisos.
+
+Guardar → (Sistema) registra y afecta reportes (flujo de caja, utilidad).
+
+Auditoría → quién creó/editó; posibilidad de anular con motivo (según permisos).
+
+Salidas: gasto contabilizado para utilidad neta y flujo de caja.
+
+7️⃣ Reportes y Análisis — Flujo
+
+Abrir Dashboard → métricas clave (ventas, gastos, utilidad, rotación, alertas).
+
+Filtros → por fecha, sucursal, vendedor, cliente, método de pago, categoría.
+
+Explorar →
+
+Ventas por período / por vendedor / por método de pago.
+
+Productos top/slow movers.
+
+Descuentos aplicados (quién, cuánto, cuándo).
+
+Cuentas por pagar/cobrar.
+
+Drill-down → clic en tarjeta/gráfica para ver detalles (hasta el documento).
+
+Exportar → Excel/PDF/CSV (según permisos).
+
+Programar envíos → reportes periódicos por email (opcional).
+
+Salidas: decisiones con datos, exportables para contabilidad.
+
+8️⃣ Usuarios y Seguridad — Flujo (Roles/Permisos sin código)
+
+Usuarios → Seguridad > Usuarios > Nuevo: DNI, nombre, usuario, contraseña (forzar cambio al primer login).
+
+Roles → Seguridad > Roles: crear/editar roles (Cajero, Almacén, Contador, Admin…).
+
+Permisos → marcar Ver/Crear/Editar/Eliminar por módulo y acciones especiales (aplicar descuentos, ver costos, ver Configuración).
+
+Asignar → vincular usuario ↔ rol (o permisos específicos si necesitas excepciones).
+
+Inicio de sesión → el usuario entra; el sistema filtra módulos/acciones según permisos.
+
+Auditoría → accesos, intentos fallidos, acciones críticas (anulaciones, ajustes, descuentos altos).
+
+Ciclo de vida → bloquear/desactivar usuario; reset de contraseña; expiración opcional.
+
+Salidas: control granular sin tocar código y trazabilidad completa.
+
+9️⃣ Extras Recomendables — Flujos
+A) Soporte Offline (venta sin internet)
+
+Detectar offline → POS pasa a modo sin conexión.
+
+Vender → sigue permitiendo escanear productos, validar stock local cacheado.
+
+Persistencia local → guarda ventas en cola segura.
+
+Reconexión → al volver internet, (Sistema) sincroniza ventas, descuenta stock en servidor y genera comprobantes pendientes.
+
+Resolución → si hubo conflictos de stock, mostrar alertas para ajuste.
+
+Salida: continuidad operativa y sincronización confiable.
+
+B) Buscador inteligente
+
+Input → usuario teclea parte del nombre/código/sku.
+
+Sugerencias → (Sistema) autocompleta considerando sinónimos/categorías.
+
+Selección → añade al carrito (POS) o abre ficha (Productos).
+
+Salida: menos tiempo por venta, menos errores.
+
+C) Integración con e-commerce (futuro)
+
+Conectar tienda → API keys (Shopify/Woo/WooCommerce/ML).
+
+Mapeo → productos/variantes/impuestos.
+
+Sincronización → catálogo y stock bidireccional; pedidos entrantes crean ventas/boletas (si aplica).
+
+Monitoreo → logs de sync, reintentos, alertas de fallo.
+
+Salida: ventas online y físicas con stock unificado.
+
+D) Notificaciones y alertas
+
+Configurar reglas → stock bajo, ventas altas, vencimientos CxP, descuentos >X%.
+
+Destinatarios → admin/supervisor/almacén.
+
+Canales → email/SMS/WhatsApp/notificación interna.
+
+Evento → (Sistema) dispara alerta con contexto y enlaces.
+
+Salida: reacción rápida ante eventos críticos.
