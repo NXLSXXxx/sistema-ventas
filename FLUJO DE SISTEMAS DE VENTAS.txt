@@ -1,6 +1,6 @@
 1️⃣ Gestión de Productos — Flujo
 
-De 42 balas 
+samuel burro de mrd
 
 Nuevo/Editar producto → (Usuario) abre Productos > Nuevo o Editar.
 
