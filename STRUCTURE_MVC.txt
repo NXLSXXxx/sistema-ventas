@@ -1,0 +1,96 @@
+/ (Root)
+├── index.php                 # Punto de entrada principal para el enrutamiento y carga del CORE.
+├── app/
+│   ├── core/                 # Componentes centrales del framework
+│   │   ├── App.php           # Maneja el enrutamiento, carga controladores y métodos.
+│   │   ├── Controller.php    # Clase base para todos los controladores.
+│   │   ├── Database.php      # Gestión de la conexión a la base de datos (PDO).
+│   │   └── Helper.php        # Funciones de ayuda globales (cargar vistas, redirigir, etc.).
+│   │
+│   ├── models/               # Modelos de datos (interacción con la DB)
+│   │   ├── ProductModel.php
+│   │   ├── InventoryModel.php
+│   │   ├── SaleModel.php
+│   │   ├── CustomerModel.php
+│   │   ├── SupplierModel.php
+│   │   ├── ExpenseModel.php
+│   │   ├── ReportModel.php
+│   │   └── UserModel.php
+│   │
+│   ├── views/                # Vistas (presentación de datos)
+│   │   ├── includes/         # Partes reutilizables de la UI (header, footer, sidebar)
+│   │   │   ├── header.php
+│   │   │   ├── footer.php
+│   │   │   └── sidebar.php
+│   │   │
+│   │   ├── products/
+│   │   │   ├── index.php
+│   │   │   └── form.php
+│   │   │
+│   │   ├── inventory/
+│   │   │   ├── index.php
+│   │   │   └── form.php
+│   │   │
+│   │   ├── sales/
+│   │   │   ├── pos.php       # Vista principal del Punto de Venta
+│   │   │   └── receipt.php   # Vista para el comprobante de venta
+│   │   │
+│   │   ├── customers/
+│   │   │   ├── index.php
+│   │   │   └── form.php
+│   │   │
+│   │   ├── suppliers/
+│   │   │   ├── index.php
+│   │   │   └── form.php
+│   │   │
+│   │   ├── expenses/
+│   │   │   ├── index.php
+│   │   │   └── form.php
+│   │   │
+│   │   ├── reports/
+│   │   │   ├── dashboard.php
+│   │   │   ├── sales_report.php
+│   │   │   └── inventory_report.php
+│   │   │
+│   │   ├── users/
+│   │   │   ├── index.php
+│   │   │   └── form.php
+│   │   │
+│   │   └── auth/             # Vistas de autenticación
+│   │       └── login.php
+│   │
+│   ├── controllers/          # Controladores (manejo de la lógica de negocio y entrada del usuario)
+│   │   ├── Products.php
+│   │   ├── Inventory.php
+│   │   ├── Sales.php
+│   │   ├── Customers.php
+│   │   ├── Suppliers.php
+│   │   ├── Expenses.php
+│   │   ├── Reports.php
+│   │   ├── Users.php
+│   │   └── Auth.php          # Controlador para la autenticación
+│   │
+│   └── helpers/              # Funciones auxiliares específicas de la aplicación
+│       ├── SessionHelper.php # Manejo de sesiones de usuario.
+│       ├── ValidationHelper.php # Validaciones de formularios.
+│       └── StockHelper.php     # Lógica relacionada con el stock, alertas, etc.
+│
+├── public/                   # Archivos accesibles directamente desde el navegador
+│   ├── css/
+│   │   └── style.css
+│   │
+│   ├── js/
+│   │   ├── main.js
+│   │   └── pos.js
+│   │
+│   └── .htaccess             # Para URL amigables (Apache)
+│
+├── config/                   # Archivos de configuración
+│   ├── config.php            # Configuración de la base de datos, rutas base, etc.
+│   └── database.php          # Configuración específica de la base de datos (si se separa de config.php)
+│
+├── vendor/                   # Dependencias de Composer (si se usa)
+├── .htaccess                 # (Opcional) Rewrite rules para dirigir todo a public/index.php
+├── .env                      # Variables de entorno (producción/desarrollo)
+├── README.md
+└── composer.json             # (Si se usa Composer)
